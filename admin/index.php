@@ -1,29 +1,35 @@
 <?php 
-    require_once('scripts/config.php');
-    confirm_logged_in();
-?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Welcome to your admin panel</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-</head>
-<body>
-    <h1>Admin Dashboard</h1>
-    <h3>Welcome <?php echo $_SESSION['user_name'];?></h3>
-    <p>This is the admin dashboard page</p>
-    <nav>
-        <ul>
-            <li><a href="#">Create User</a></li>
-            <li><a href="#">Edit User</a></li>
-            <li><a href="#">Delete User</a></li>
-            <li><a href="scripts/caller.php?caller_id=logout">Sign Out</a></li>
-        </ul>
-    </nav>
-</body>
-</html>
+    require_once('../admin/scripts/config.php');
+
+    if (isset($_GET['media'])) {
+        $type = $_GET['media'];
+
+        if ($type == "video") {
+            $tbl = "tbl_movies";
+        } else {
+            $tbl = "tbl_audio";
+        }
+    }
+
+    if(isset($_GET['filter'])){
+
+        //$tbl = 'tbl_movies';
+        $tbl2 = 'tbl_genre';
+        $tbl3 = 'tbl_mov_genre';
+        $col = 'movies_id';
+        $col2 = 'genre_id';
+        $col3 = 'genre_name';
+        $filter = $_GET['filter'];
+
+        $results = filterResults($tbl, $tbl2, $tbl3, $col, $col2, $col3, $filter);
+        
+        echo json_encode($results);
+
+    } else {
+
+        $results = getAll($tbl);
+
+        echo json_encode($results);
+    }
+?>

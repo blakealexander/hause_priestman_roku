@@ -1,2 +1,1 @@
-# hause_priestman_roku
-Roku Movie application.
+# pan-admin-login-homework

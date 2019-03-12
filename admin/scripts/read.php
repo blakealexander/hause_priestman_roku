@@ -7,15 +7,16 @@
         $queryAll = 'SELECT * FROM '.$tbl;
         $runAll = $pdo->query($queryAll);
 
-        if($runAll){
+        $result = array();       
 
-            return $runAll;
-        }else {
-
-            $error = 'There was a problem accessing this info';
-            return $error;
+        while($row = $runAll->fetch(PDO::FETCH_ASSOC)) {
+            $result[] = $row;
         }
-    }
+
+        return $result;
+
+        }
+    
 
     function getSingle($tbl, $col, $value){
 
@@ -47,7 +48,13 @@
         $runQuery = $pdo->query($filterQuery);
         if($runQuery){
 
-                return $runQuery;
+                $results = array();
+
+                while($row = $runQuery->fetch(PDO::FETCH_ASSOC)) {
+                    $results[] = $row;
+                }
+
+                return $results;
         }
 
         else{
