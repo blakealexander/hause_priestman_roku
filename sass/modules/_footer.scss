@@ -15,6 +15,8 @@ footer {
 	ul { 
         list-style-type: none;
         @include vertical-align();
+        margin-bottom: 0;
+        max-width: 95px;
 
 		li {
 			font-size: 2.5em;

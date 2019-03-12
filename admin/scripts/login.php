@@ -59,7 +59,7 @@ require_once('connect.php');
         $message = 'No ID';
         return $message;
     }
-    //redirect_to('index.php');
+
   } else {
     $message = 'No User';
     return $message;

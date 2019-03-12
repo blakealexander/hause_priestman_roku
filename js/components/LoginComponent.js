@@ -7,12 +7,12 @@ export default {
                 <hr class="my-4">
                 <form>
                     <div class="form-row align-items-center">
-                        <div class="col-sm-3 my-1">
+                        <div class="col-md-3 my-1">
                             <label class="sr-only" for="inlineFormInputName">Name</label>
                             <input v-model="input.username" type="text" class="form-control" id="inlineFormInputName" placeholder="username" required>
                         </div>
 
-                        <div class="col-sm-3 my-1">
+                        <div class="col-md-3 my-1">
                             <label class="sr-only" for="inlineFormPassword">Name</label>
                             <input v-model="input.password" type="password" class="form-control" id="inlineFormPassword" placeholder="password" required>
                         </div>
@@ -59,6 +59,7 @@ export default {
                     if (typeof data != "object") { // means that we're not getting a user object back
                         console.warn(data);
                         console.error("authentication failed, please try again");
+                        this.$emit("autherror", data);
                     } else {
                         this.$emit("authenticated", true, data[0]);
                         this.$router.replace({ name: "users" });
