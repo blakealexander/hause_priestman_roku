@@ -1,29 +1,71 @@
 export default {
     template: `
         <div class="container">
-            <div class="jumbotron roku-jumbotron">
-                <h1 class="display-4">Welcome to Flashback!</h1>
-                <p class="lead">Before revisiting your favourite movies, tv shows or music from yesteryear, please log in with a valid username and password.</p>
-                <hr class="my-4">
-                <form>
-                    <div class="form-row align-items-center">
-                        <div class="col-md-3 my-1">
-                            <label class="sr-only" for="inlineFormInputName">Name</label>
-                            <input v-model="input.username" type="text" class="form-control" id="inlineFormInputName" placeholder="username" required>
-                        </div>
 
-                        <div class="col-md-3 my-1">
-                            <label class="sr-only" for="inlineFormPassword">Name</label>
-                            <input v-model="input.password" type="password" class="form-control" id="inlineFormPassword" placeholder="password" required>
-                        </div>
-
-                        <div class="col-auto my-1">
-                            <button v-on:click.prevent="login()" type="submit" class="btn btn-primary">Go!</button>
-                        </div>
-                    </div>
-                </form>            
+        <div class="entryForm">
+            <ul class="tab-group">
+                 <li class="tab active"><a href="#signup">Sign Up</a></li>
+                 <li class="tab"><a href="#login">Log In</a></li>
+            </ul>
+      
+        <div class="tab-content">
+             <div id="signup">   
+                  <h1>Sign Up for Free</h1>
+          
+             <form action="/" method="post">
+             <div class="top-row">
+             <div class="field-wrap">
+              <label>
+                First Name<span class="req">*</span>
+              </label>
+              <input type="text" required autocomplete="off" />
             </div>
+        
+            <div class="field-wrap">
+              <label>
+                Last Name<span class="req">*</span>
+              </label>
+              <input type="text"required autocomplete="off"/>
+            </div>
+          </div>
+
+          <div class="field-wrap">
+            <label>
+              Email Address<span class="req">*</span>
+            </label>
+            <input type="email"required autocomplete="off"/>
+          </div>
+          
+          <div class="field-wrap">
+            <label>
+              Set A Password<span class="req">*</span>
+            </label>
+            <input type="password"required autocomplete="off"/>
+          </div>
+          
+          <button type="submit" class="button button-block"/>Get Started</button>
+          
+          </form>
+
         </div>
+        
+        <div id="login">   
+          <h1>Welcome Back To Roku!</h1>
+          <form action="/" method="post">
+            <div class="field-wrap">
+                <label class="sr-only" for="inlineFormInputName">Name</label>
+                <input v-model="input.username" type="text" class="form-control" id="inlineFormInputName" placeholder="username" required>
+            </div>
+            <div class="field-wrap">
+                <label class="sr-only" for="inlineFormPassword">Name</label>
+                <input v-model="input.password" type="password" class="form-control" id="inlineFormPassword" placeholder="password" required>
+            </div>
+            <p class="forgot"><a href="#">Forgot Password?</a></p>
+            <button v-on:click.prevent="login()" type="submit" class="btn btn-primary">Go!</button>
+          </form>
+        </div>
+      </div>
+</div>
      `,
  
      data() {
