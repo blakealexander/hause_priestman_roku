@@ -2,33 +2,47 @@ export default {
     props: ['currentuser'],
 
     template: `
-    <div class="container">
-    <!-- render this if we're viewing television or film -->
-        <div class="row" v-if="activeMediaType == 'video' && retrievedMedia.length > 0">
-            <div class="col-12 order-2 order-md-1 col-md-3 media-container">
-                <h4 class="media-title">{{currentMediaDetails.movies_title}}</h4>
-                <p class="media-details" v-html="currentMediaDetails.movies_storyline"></p>
-                <span class="media-time">{{currentMediaDetails.movies_runtime}}</span>
-                <span class="media-year">Released in {{currentMediaDetails.movies_year}}</span>
-            </div>
+<div class="jumbotron">
+  <div class="container text-center">
+  <div class="row" v-if="activeMediaType == 'video' && retrievedMedia.length > 0">
+  <div class="col-12 order-2 order-md-1 col-md-3 media-container">
+      <h4 class="media-title">{{currentMediaDetails.movies_title}}</h4>
+      <p class="media-details" v-html="currentMediaDetails.movies_storyline"></p>
+      <span class="media-time">{{currentMediaDetails.movies_runtime}}</span>
+      <span class="media-year">Released in {{currentMediaDetails.movies_year}}</span>
+  </div>
 
-            <div class="col-12 order-1 order-md-2 col-md-9 media-container">
-                <video autoplay controls muted :src="'video/' + currentMediaDetails.movies_trailer" class="fs-video"></video>
-            </div>
-        </div>
-
-        <div class="row" v-if="activeMediaType == 'audio' && retrievedMedia.length > 0">
-            <div class="col-12 order-2 order-md-1 col-md-6 media-container">
-                <h4 class="media-title">{{currentMediaDetails.audio_artist}} * {{currentMediaDetails.audio_title}}</h4>
-                <p class="media-details" v-html="currentMediaDetails.audio_storyline"></p>
-                <span class="media-year">Released in {{currentMediaDetails.audio_year}}</span>              
-            </div>
-
-            <div class="col-12 order-1 order-md-2 col-md-6 audio-wrapper">
-                <audio autoplay controls :src="'audio/' + currentMediaDetails.audio_src"/>
-                <img :src="'images/audio/' + currentMediaDetails.audio_cover" alt="album art" class="img-fluid"/>
-            </div>
-        </div>
+  <div class="col-12 order-1 order-md-2 col-md-9 media-container">
+      <video autoplay controls muted :src="'video/' + currentMediaDetails.movies_trailer" class="fs-video"></video>
+  </div>
+</div>
+  
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+    <div class="row" v-if="activeMediaType == 'audio' && retrievedMedia.length > 0">
+    <div class="col-12 order-2 order-md-1 col-md-6 media-container">
+        <h4 class="media-title">{{currentMediaDetails.audio_artist}} * {{currentMediaDetails.audio_title}}</h4>
+        <p class="media-details" v-html="currentMediaDetails.audio_storyline"></p>
+        <span class="media-year">Released in {{currentMediaDetails.audio_year}}</span>              
+    </div>
+    </div>
+    <div class="carousel-item">
+    <div class="col-12 order-1 order-md-2 col-md-6 audio-wrapper">
+    <audio autoplay controls :src="'audio/' + currentMediaDetails.audio_src"/>
+    <img :src="'images/audio/' + currentMediaDetails.audio_cover" alt="album art" class="img-fluid"/>
+</div>
+</div>
+    </div>
+    <div class="carousel-item">
+    <div class="col-12 order-1 order-md-2 col-md-6 audio-wrapper">
+    <audio autoplay controls :src="'audio/' + currentMediaDetails.audio_src"/>
+    <img :src="'images/audio/' + currentMediaDetails.audio_cover" alt="album art" class="img-fluid"/>
+</div>
+</div>
+    </div>
+  </div>
+</div>
 
         <div class="row"> <!-- 2-up for nav and media info -->
             <nav class="col-12 col-sm-3 side-nav">
@@ -43,7 +57,7 @@ export default {
                 </ul>
             </nav>
 
-            <div class="col-12 col-sm-9 media-info">
+            <div class="col-12 col-sm-9 media-info navbar-default">
                 <!-- genres for video -->
                     <ul v-if="activeMediaType == 'video'" class="media-genres">
                         <li>
