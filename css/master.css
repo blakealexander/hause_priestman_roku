@@ -269,4 +269,36 @@ textarea {
   padding: 1.25rem;
   background-color: #1ab188;
 }
+
+.jumbotron {
+  background-color: #13232f;
+  padding: 10px;
+}
+
+.fs-video {
+  width: 100%;
+}
+
+.media-container:first-of-type {
+  padding-bottom: 1em;
+}
+
+.media-container:last-of-type {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.media-info {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.media-info > div {
+  padding: 0 10px;
+}
+
+.media-thumb {
+  height: 140px;
+  margin: 0.7em;
+}
 /*# sourceMappingURL=master.css.map */

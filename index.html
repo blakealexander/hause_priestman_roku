@@ -21,7 +21,8 @@
 	<div class="sidenav">
 		<div class="menu">		
 			<img src="images/roku.svg" alt="Roku logo" width="90"><span>FlashBack</span>
-			<a><li v-if="authenticated">Profile</li></a>
+			<a><li v-if="authenticated" v-on:click="/useradmin">Profiles</li></a>
+			<a><li v-if="administrator">Users</li></a>
 			<a><li v-if="administrator">Settings</li></a>
 			<a><li v-if="authenticated" v-on:click="logout()">Logout</li></a>
 		</div>

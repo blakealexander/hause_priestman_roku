@@ -1,0 +1,21 @@
+.jumbotron {
+    background-color: $form-bg;
+    padding: 10px;
+}
+
+.fs-video { width: 100% }
+
+.media-container:first-of-type { padding-bottom: 1em; }
+.media-container:last-of-type { padding-left: 0; padding-right: 0; }
+
+.media-info {
+    padding-left: 0;
+    padding-right: 0;
+
+    > div { padding: 0 10px; }
+}
+
+.media-thumb {
+    height: 140px;
+    margin: 0.7em;
+}
